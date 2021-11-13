@@ -1,0 +1,346 @@
+JavaScript's types are:
+
+* Number
+* String
+* Boolean
+* Symbol
+* Object
+  - Function
+  - Array
+  - Date
+  - RegExp
+* null      (oddly enough this is a type)
+* undefined (oddly enough this is a type)
+
+
+// single line comment
+/* multi line
+   comment */
+
+
+let num1 = 0;
+let num2 = 0.2;
+let num3 = 6.02e-32;
+
+const neverchange = 10;
+neverchange = 12; => TypeError: Assignment to constant variable.
+
+// The first character of all identifiers must be a letter, _, or $;
+// subsequent characters can be digits: i, v17, $str, __proto__
+
+var _s1 = 'a string';
+var _s2 = "another string";
+var _s3 =  "that's also a string"
+
+var b1 = true;   // and we can also use true as a literal boolean
+var b2 = false;  // and of course also false
+
+var m = null;      // null is also a valid literal value,
+                   // and strangely also a type
+var u = undefined; // and the same goes for undefined, it's a valid
+                   // literal and strangely also a type
+
+var o = {}; // a literal empty object
+var a = []; // a literal special kind of object representing an array
+
+
+
+NUMBERS
+-------
+
+n = 12 + 23.3
+
+// There is only one kind of numbers in Javascript, this means
+// that all numbers are saved as floating point numbers.
+
+3 / 2
+ => 1.5
+
+// The maximum number of decimals is 17, but we must remember that
+// floating point arithmetic is not always accurate:
+
+var x = 0.2 + 0.1;
+x
+=> 0.30000000000000004
+
+// Integers (numbers without a period or exponent notation) are accurate
+// up to 15 digits.
+
+x = 999999999999999;
+x
+=> 999999999999999
+
+x = 9999999999999999;
+x
+=> 10000000000000000
+
+
+Math.PI
+=> 3.141592653589793
+
+parseInt('0123', 10);
+=> 123
+
+parseInt('hello', 10);
+=> NaN
+
+// special value called NaN (short for "Not a Number")
+
+
+STRINGS
+-------
+
+var s1 = "hello";
+
+var s2 = s1 + " world";
+
+s2
+=> "hello world"
+
+s2.charAt(1)
+=> 'e'
+
+s2.replace('hello', 'hi');
+=> 'hi world'
+
+s2.toUpperCase();
+=> 'HELLO WORLD'
+
+
+
+BOOLEANS
+--------
+
+Boolean(false)
+=> false
+
+Boolean(0)
+=> false
+
+Boolean("")
+=> false
+
+Boolean(NaN)
+=> false
+
+Boolean(null)
+=> false
+
+Boolean(undefined)
+=> false
+
+//Everything else is converted to true
+
+Boolean({})
+=> true
+
+Boolean([])
+=> true
+
+true && false
+=> false
+
+true || false
+=> true
+
+!false
+=> true
+
+
+OPERATORS
+---------
+
+3 + 5
+=> 8
+
+8 - 7
+=> 1
+
+12 * 4
+=> 48
+
+10 / 3
+=> 3.3333333333333335  // note the imprecision
+
+10 % 3
+=> 1
+
+
+let a = 10;
+
+a++;
+=> 10
+
+a;
+=> 11
+
+++a;
+=> 12
+
+a--;
+=> 12
+
+a;
+=> 11
+
+--a;
+=> 10
+
+ --a;
+=> 10
+
+a += 12;
+=> 22
+
+a -= 34;
+=> -12
+
+
+"hello" + " yellow"
+=> "hello yellow"
+
+'3' + 4 + 5;
+=> '345'
+
+3 + 4 + '5';
+=> '75'
+
+
+3 < 4
+=> true
+
+"aa" > "bb"
+=> false
+
+123 == '123'
+=> true
+
+123 == true
+=> false
+
+1 == true
+=> true
+
+'1' == true
+=> true
+
+'hello' != true
+=> true
+
+
+123 === '123'
+=> false
+
+1 !== true
+=> true
+
+
+
+
+SYMBOLS
+-------
+
+let symb1 = Symbol('hello')
+let symb2 = Symbol('hello')
+
+symb1 === symb2
+=> false
+
+
+OBJECT
+------
+
+
+var o1 = {};
+
+var o2 = new Object();
+
+var o3 = {
+	count: 0,
+	name: 'Jane Doe',
+};
+
+
+SPECIAL OBJECT: FUNCTION
+------------------------
+
+function add3(x) {
+	 var y = 3;
+	 return  x + y;
+}
+
+var a = 10;
+var b = 15;
+
+v_test = function(){
+   var a = 7;
+   b = 7;
+  };
+
+v_test()
+
+a  => 10  // the a inside v_test is a local variable
+b  => 7   // the b inside v_test will be bound to the "closest" b found in any outer scope
+
+add3()
+=> NaN // You can't perform addition on undefined
+
+add3(2, 3, 4)
+=> 5  // Used only first parameter
+
+function SumOfAll() {
+  var sum = 0;
+  for (var i = 0, j = arguments.length; i < j; i++) {
+     sum += arguments[i];
+  }
+  return sum;
+}
+
+sumOfAll(3, 4, 5,6, 7, 8)
+=> 33
+
+
+
+ARRAYS
+------
+
+var names = ["Eich", "McCarthy", "Matsumoto" ];
+
+names[1];
+
+ if (names[0] == "Eich") {
+     console.log("Eich");
+ } else {
+     console.log("I don't know this person");
+ }
+
+
+names.length;
+=> 3
+
+names[100] = "Kay"
+=> 'Kay'
+
+names
+=> [ 'Eich', 'McCarthy', 'Matsumoto', <97 empty items>, 'Kay' ]
+
+names[1000];
+=> undefined
+
+
+
+DATE AND REGEXP
+---------------
+
+...are types that we will not look closer at now. But at least you
+know that they are there.
+
+NULL AND UNDEFINED
+------------------
+
+typeof null        // object (bug in ECMAScript, should be null)
+typeof undefined   // undefined
+null === undefined // false
+null  == undefined // true
+
+Now we're set to start looking at more interesting things next time.
